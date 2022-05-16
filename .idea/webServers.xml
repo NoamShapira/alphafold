@@ -2,10 +2,10 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="aea5c50e-fb93-4361-b11f-cba8b9546c46" name="molgen2">
-        <fileTransfer accessType="SFTP" host="molgen2.wexac.weizmann.ac.il" port="22" sshConfigId="d705e724-a843-4314-aa88-608030396df1" sshConfig="noamsh@molgen2.wexac.weizmann.ac.il:22 password">
+      <webServer id="6fbaaa5e-9843-4e13-ab26-8208a76c885a" name="molgen2">
+        <fileTransfer accessType="SFTP" host="molgen2.wexac.weizmann.ac.il" port="22" sshConfigId="121db0a2-1790-4440-a372-62f442b9a32f" sshConfig="noamsh@molgen2.wexac.weizmann.ac.il:22 password">
           <advancedOptions>
-            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
         </fileTransfer>
       </webServer>
