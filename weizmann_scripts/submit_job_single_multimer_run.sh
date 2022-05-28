@@ -10,7 +10,7 @@ JOB_LOGS_DIR="$RESULTS_DIR"/job_logs
 
 mkdir -p "$JOB_LOGS_DIR"
 
-PIPELINE_SCRIPT=/home/labs/sorek/noamsh/alphafold-pycharm/weizmann_scripts/run_multimer_single_time.sh
-JOB_MEMORY_MB=50000
+PIPELINE_SCRIPT=/home/labs/sorek/noamsh/alphafold/weizmann_scripts/run_multimer_single_time.sh
+JOB_MEMORY_MB=20000
 
-bsub -q gpu-long -R rusage[mem="$JOB_MEMORY_MB"] -gpu num=1 -o "$JOB_LOGS_DIR" -R hname!=ibdgx007 -m "dgx_hosts hpe6k_hosts hpe8k_hosts asus_hosts" bash "$PIPELINE_SCRIPT" "$DEFENCE_PROTEIN" "$PHAGE_PROTEIN" "$RESULTS_DIR"
+bsub -q gpu-medium -R rusage[mem="$JOB_MEMORY_MB"] -gpu num=1 -o "$JOB_LOGS_DIR" -R 'hname!=cn300 && hname!=cn301 && hname!=cn302 && hname!=cn303 && hname!=cn304 && hname!=cn736' bash "$PIPELINE_SCRIPT" "$DEFENCE_PROTEIN" "$PHAGE_PROTEIN" "$RESULTS_DIR"

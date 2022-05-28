@@ -3,7 +3,7 @@ PHAGE_PROTEIN="$2"
 RESULTS_DIR="$3"
 
 EREZ_DATA_DIR=/home/labs/sorek/erezy/AF
-REPO_DIR=/home/labs/sorek/noamsh/alphafold-pycharm
+REPO_DIR=/home/labs/sorek/noamsh/alphafold
 
 COMBINED_FASTA_PATH=""
 IFS=',' read -r -a array <<< "$DEFENCE_PROTEIN" # split defence proteins by comma

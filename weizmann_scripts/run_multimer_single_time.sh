@@ -2,15 +2,21 @@ DEFENCE_PROTEIN="$1"
 PHAGE_PROTEIN="$2"
 RESULTS_DIR="$3"
 
+BENCHMARK_ON_SAME_PROTEIN_DIFFERENT_NAME="True" # can be True or False
+
 EREZ_DATA_DIR=/home/labs/sorek/erezy/AF
-REPO_DIR=/home/labs/sorek/noamsh/alphafold-pycharm
+REPO_DIR=/home/labs/sorek/noamsh/alphafold
 NUM_PREDICTION_PER_MODEL="1"
 
 module load miniconda/201904/python/3.7
 conda activate noam_alphafold
-python "$REPO_DIR"/weizmann_scripts/prepare_result_dir_for_alphafold.py --results_dir="$RESULTS_DIR" --bacteria_protein_name="$DEFENCE_PROTEIN" --phage_protein_name="$PHAGE_PROTEIN"
-DEFENCE_PHAGE="$DEFENCE_PROTEIN"_"$PHAGE_PROTEIN"
-COMBINED_FASTA_PATH="$RESULTS_DIR"/"$DEFENCE_PHAGE"/"$DEFENCE_PHAGE".fasta
+python "$REPO_DIR"/weizmann_scripts/prepare_result_dir_for_alphafold.py --results_dir="$RESULTS_DIR" --bacteria_protein_name="$DEFENCE_PROTEIN" --phage_protein_name="$PHAGE_PROTEIN" --create_another_mock_protein_for_test=$BENCHMARK_ON_SAME_PROTEIN_DIFFERENT_NAME
+
+DEFENCE_PHAGE="${DEFENCE_PROTEIN}_${PHAGE_PROTEIN}"
+COMBINED_FASTA_PATH="${RESULTS_DIR}/${DEFENCE_PHAGE}/${DEFENCE_PHAGE}.fasta"
+if [ $BENCHMARK_ON_SAME_PROTEIN_DIFFERENT_NAME == "True" ]; then
+  COMBINED_FASTA_PATH="${COMBINED_FASTA_PATH},${RESULTS_DIR}/test_${DEFENCE_PHAGE}/test_${DEFENCE_PHAGE}.fasta"
+fi
 
 # /apps/containers/singularity/AlphaFold-2.1.2-fosscuda-2020b-BETA.sif
 # --env XLA_FLAGS="--xla_gpu_force_compilation_parallelism=1"
