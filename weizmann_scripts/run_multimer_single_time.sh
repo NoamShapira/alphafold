@@ -2,7 +2,7 @@ DEFENCE_PROTEIN="$1"
 PHAGE_PROTEIN="$2"
 RESULTS_DIR="$3"
 
-BENCHMARK_ON_SAME_PROTEIN_DIFFERENT_NAME="True" # can be True or False
+BENCHMARK_ON_SAME_PROTEIN_DIFFERENT_NAME="False" # can be True or False
 
 EREZ_DATA_DIR=/home/labs/sorek/erezy/AF
 REPO_DIR=/home/labs/sorek/noamsh/alphafold
